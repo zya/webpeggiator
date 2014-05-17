@@ -15,6 +15,7 @@ function midisuccess(access){
 	inputs[0].onmidimessage = function(e){
 		//midi to frequency
 		
+		
 		if(connections.length > 0){
 			
 			var random = Math.floor(Math.random() * connections.length);
