@@ -129,10 +129,16 @@ function peerConnect(){
 
 }
 
+function show(){
+	$('#creator').show();
+}
 
 window.onload = function(){
 
+	$('#creator').hide();
 	$('#create').click(peerCreate);
-	$('#connect').click(peerConnect);
+	$('#connect').click(function(){
+		peerConnect();
+	});
 
 };
