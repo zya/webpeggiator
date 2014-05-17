@@ -90,10 +90,12 @@ Voice.prototype.noteOn = function(){
 	
 	
 	this.env.gain.setValueAtTime(this.env.gain.value, now);
-	this.env.gain.linearRampToValueAtTime(1, now + 0.4);
-	this.env.gain.linearRampToValueAtTime(0, now + 0.7);
+	this.env.gain.linearRampToValueAtTime(0.8, now + 0.4);
+	this.env.gain.linearRampToValueAtTime(0, now + 0.6);
 	this.osc.start(now);
 	this.osc.stop(now + 1);
+
+
 	
 };
 
