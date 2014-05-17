@@ -44,7 +44,7 @@ window.onload = function(){
 	$('#connect').click(function(){
 		peer = new Peer({key:'pa8gvlxhg0fkzkt9'});
 		peer.on('open',peerOpen);
-		conn = peer.conn('zya');
+		conn = peer.connect('zya');
 	});
 
 };
