@@ -26,7 +26,9 @@ function midisuccess(access){
 	            		//noteOn(event.data[1]);
 	            		var message = [true, frequency];
 	            		selected.send(message);
-	            		
+	            		var rc1 = Math.random() * 256;
+
+
 	         		}
          		break;
            		// if velocity == 0, fall thru: it's a note-off.  MIDI's weird, y'all.
@@ -72,6 +74,8 @@ function peerCreate(){
 
 	navigator.requestMIDIAccess().then(midisuccess, midierror);
 
+	$('#status').hide();
+
 
 }
 
@@ -97,6 +101,9 @@ Voice.prototype.noteOn = function(){
 
 
 	
+
+
+	
 };
 
 Voice.prototype.noteOff = function(){
@@ -107,6 +114,14 @@ function onData(data){
 
 	if(data[0]){
 		//noteOn
+		$('#title').animate({
+			opacity: 0
+		},100,function(){
+			$('#title').animate({
+				opacity: 1
+			},100);
+		});
+		
 		var voice = new Voice(data[1]);
 		voice.noteOn();
 		voices.push(voice);
@@ -125,7 +140,7 @@ function peerConnect(){
 	peer = new Peer({key:'pa8gvlxhg0fkzkt9'});
 	peer.on('open',peerOpen);
 	conn = peer.connect('zya');
-
+	$('#status').html('You are now connected');
 	conn.on('data',onData);
 
 }

@@ -1,5 +1,7 @@
 html,body{
 	text-align: center;
+	background: white;
+	height: 100%;
 }
 #title{
 	font-size: 70px;
