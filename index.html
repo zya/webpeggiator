@@ -5,11 +5,35 @@
 		<script src="js/jquery-1.10.1.js"></script>
 		<script src="js/WebMIDIAPI.js"></script>
 		<script src="http://cdn.peerjs.com/0.3/peer.js"></script>
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+		
 		<script src="js/main.js"></script>
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 
 	<body>
-		<div>HELLO</div>
+		<div class='container'>
+			<div class='row' id='title'>
+				MIDI HACK
+			</div>
+			<div class='row'>
+				<div class='col-md-12'>
+					<button type='button' class='btn btn-primary btn-lg' id='connect'>Connect</button>
+					Click to connect to a MIDI Host
+				</div>
+			</div><br>
+			<div class='row'>
+				<div class='col-md-12' id='hid'>
+					<button type='button' class='btn btn-info btn-sm' id='create'>Create</button>
+					<input type='text' id='customID' placeholder='custom id'></input>
+					Click to create a new to a MIDI Host (Admin)
+
+				</div>
+			</div>
+		</div>
+		
 	</body>
 </html>
