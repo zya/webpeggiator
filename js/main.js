@@ -26,7 +26,7 @@ function midisuccess(access){
 	            		var message = [true, frequency];
 	            		selected.send(message);
 	            		
-	            		if(connections.length > 10){
+	            		if(connections.length > 5){
 
 			      			var random2 = Math.floor(Math.random() * connections.length);
 			      			var selected2 = connections[random2];
