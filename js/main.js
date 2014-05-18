@@ -7,14 +7,12 @@ var context = new webkitAudioContext();
 function midisuccess(access){
 
 	midi = access;
-
 	var inputs = midi.inputs();
 	console.log(inputs);
 	var outputs = midi.outputs();
 
 	inputs[0].onmidimessage = function(e){
-		//midi to frequency
-		
+		//midi to frequency	
 		
 		if(connections.length > 0){
 			
@@ -27,27 +25,31 @@ function midisuccess(access){
 	            		//noteOn(event.data[1]);
 	            		var message = [true, frequency];
 	            		selected.send(message);
-	            		var rc1 = Math.random() * 256;
+	            		
+	            		if(connections.length > 10){
 
-
+			      			var random2 = Math.floor(Math.random() * connections.length);
+			      			var selected2 = connections[random2];
+			      			var message2 = [true, frequency];
+	            			selected2.send(message2);
+      			
+      					}	
 	         		}
          		break;
            		// if velocity == 0, fall thru: it's a note-off.  MIDI's weird, y'all.
         		case 0x80:
          		//noteOff(event.data[1]);
-         			
+         			/*
          			var message2 = [false, frequency];
 	            	selected.send(message2);
-         			
+         			*/
           		break;	
           			
       		}
-		}
-		
+
+		}	
 		
 	};
-
-
 	
 }
 
@@ -60,7 +62,6 @@ function peerOpen(id){
 	console.log('My peer Id is ' + id);
 }
 
-
 //create a room and get midi
 function peerCreate(){
 	var id = $('#customID').val();
@@ -70,13 +71,11 @@ function peerCreate(){
 	peer.on('connection',function(conn){
 		console.log(conn);
 		connections.push(conn);
-		console.log(connections);
 	});
 
 	navigator.requestMIDIAccess().then(midisuccess, midierror);
 
 	$('#status').hide();
-
 
 }
 
@@ -93,17 +92,11 @@ Voice.prototype.noteOn = function(){
 	this.osc.connect(this.env);
 	this.env.connect(context.destination);
 	
-	
 	this.env.gain.setValueAtTime(this.env.gain.value, now);
 	this.env.gain.linearRampToValueAtTime(0.8, now + 0.4);
 	this.env.gain.linearRampToValueAtTime(0, now + 0.6);
 	this.osc.start(now);
 	this.osc.stop(now + 1);
-
-
-	
-
-
 	
 };
 
