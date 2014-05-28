@@ -1,4 +1,4 @@
-midihack
+Webpeggiator
 ========
 
 My [MIDIHACK DAY](http://www.midihack.com) submission.
